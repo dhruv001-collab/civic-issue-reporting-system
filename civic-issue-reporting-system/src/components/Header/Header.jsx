@@ -5,8 +5,7 @@ import logo from "../../assets/logo.png";
 import { AppContext } from "../../Context/AppContext";
 
 const Nav = () => {
-  
-    const {isOpen,setIsOpen}=useContext(AppContext);
+  const { isOpen, setIsOpen } = useContext(AppContext);
   return (
     <nav className="bg-white shadow-md px-3 lg:px-12">
       <div className="flex justify-between items-center">
@@ -51,7 +50,14 @@ const Nav = () => {
         </div>
 
         {/* Hamburger Icon (Mobile) */}
-        <div className="lg:hidden">
+
+        <div className="lg:hidden flex items-center gap-4">
+          <div className={!isOpen?'flex':'hidden'}>
+            <button className="px-6 py-2 bg-green-500 text-white rounded-full hover:bg-green-600 transition-all">
+              Post Issue
+            </button>
+          </div>
+
           <button onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FaTimes size={26} /> : <FaBars size={26} />}
           </button>
