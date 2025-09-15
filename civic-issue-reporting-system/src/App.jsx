@@ -1,13 +1,18 @@
+import { Route, Routes } from 'react-router-dom';
 import './App.css'
+import Home from './pages/Home/Home';
+import Login from './pages/AuthLogin/Login';
+import Reports from './pages/Reports/Reports';
 
 function App() {
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-r from-pink-500 via-red-500 to-yellow-500">
-      <h1 className="text-5xl font-bold text-white drop-shadow-lg">
-        🚀 Tailwind is Working!
-      </h1>
-    </div>
+    <Routes>
+      <Route path='/' element={<Home/>}/>
+      <Route path='/login' element={<Login/>}/>
+      <Route path='/reports' element={<Reports/>}/>
+    </Routes>
+   
   );
 }
 
