@@ -4,7 +4,7 @@ import { FeaturesHomeData } from '../../FeaturesHomeData/FeaturesHomeData'
 
 const FeaturesSection = () => {
   return (
-    <section className="w-full h-screen relative bg-black flex justify-center items-center overflow-y-scroll lg:overflow-hidden scrollbar-none  lg:mt-6">
+    <section className="w-full  relative bg-black flex justify-center items-center lg:overflow-hidden scrollbar-none  lg:mt-6">
       <img
         src={darkWorld}
         className="w-full h-full object-cover absolute  opacity-30"
