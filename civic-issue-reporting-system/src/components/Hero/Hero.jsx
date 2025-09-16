@@ -31,7 +31,7 @@ const Hero = () => {
         </div>
 
 
-        <div className='flex-1 flex justify-center lg:justify-end'>
+        <div className='flex-1 flex justify-center lg:justify-end '>
           <img
             src={HeroImg}
             alt="Collage of civic issues"

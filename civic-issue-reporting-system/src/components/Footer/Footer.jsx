@@ -7,7 +7,7 @@ const Footer = () => {
     <footer className="bg-black text-gray-400 py-12 px-6 mt-1">
       <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-3 gap-12">
         <div>
-          <h4 className="text-white text-lg font-semibold mb-4">Browse Pages</h4>
+          <h4 className="text-teal-500 text-lg font-semibold mb-4">Browse Pages</h4>
           <ul className="space-y-2 text-sm">
             <li><a href="#" className="hover:text-white transition-colors">Our Company</a></li>
             <li><a href="#" className="hover:text-white transition-colors">Terms & Conditions</a></li>
@@ -18,7 +18,7 @@ const Footer = () => {
           </ul>
         </div>
         <div>
-          <h4 className="text-white text-lg font-semibold mb-4">Get in Touch</h4>
+          <h4 className="text-teal-500 text-lg font-semibold mb-4">Get in Touch</h4>
           <address className="not-italic space-y-2 text-sm">
             <p className="text-gray-300">UrbanFix</p>
             <p>ABC Area</p>
@@ -28,7 +28,7 @@ const Footer = () => {
           </address>
         </div>
         <div>
-          <h4 className="text-white text-lg font-semibold mb-4">Subscribe Newsletter</h4>
+          <h4 className="text-teal-500 text-lg font-semibold mb-4">Subscribe Newsletter</h4>
           <p className="mb-4 text-sm leading-relaxed">
             Keep updated for new releases and freebies. Enter your e-mail and subscribe to our newsletter.
           </p>
