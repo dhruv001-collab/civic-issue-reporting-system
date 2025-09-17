@@ -58,9 +58,9 @@ const Nav = () => {
                 <div className='flex items-center gap-4 max-sm:text-sm'>
 
                   <p className=''>
-                    Hi, {user.firstName?.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase()}
+                    Hi, {user.firstName? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : "" }
                     {" "}
-                    {user.lastName?.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase()}</p>
+                    {user.lastName? user.lastName.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase() : ""}</p>
                   <UserButton afterSignOutUrl="/" />
                 </div>
                 :
