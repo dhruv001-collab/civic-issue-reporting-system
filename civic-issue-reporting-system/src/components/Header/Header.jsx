@@ -83,7 +83,7 @@ const Nav = () => {
             </NavLink>
 
             <NavLink
-              to="/contact"
+              to="/reports"
               className={({ isActive }) =>
                 `transition-all ${
                   isActive
@@ -92,7 +92,7 @@ const Nav = () => {
                 }`
               }
             >
-              Contact
+              Reports
             </NavLink>
           </div>
 
