@@ -5,10 +5,16 @@ export const AppContext = createContext();
 export const AppContextProvider = ({ children }) => {
 
     const [isOpen, setIsOpen] = useState(false);
+    const [searchText, setSearchText] = useState("");
+    const [status, setStatus] = useState("All");
     
     const value = {
         isOpen,
         setIsOpen,
+        searchText,
+        setSearchText,
+        status,
+        setStatus
         // Add any global state or functions you want to provide here
     };
     return (
