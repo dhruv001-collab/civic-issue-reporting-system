@@ -4,7 +4,7 @@ import { FaThumbsUp, FaComment } from "react-icons/fa";
 import location from "../../assets/location.png";
 const RecentlyReported = () => {
   return (
-    <section className="mt-8 h-[90vh] md:h-[70vh]">
+    <section className="h-screen-auto min-h-[65vh] md:min-h-[50vh] lg:min-h-[40vh]">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 px-4 sm:px-6 lg:px-10">
         <h1 className="font-bold text-2xl sm:text-3xl lg:text-4xl text-gray-800">
           Recently Reported Problems
