@@ -3,6 +3,7 @@ import img2 from "../assets/2018_1$largeimg22_Monday_2018_014703373.jpg";
 import img3 from "../assets/potholes-india-roads-death-4.jpg";
 import img4 from "../assets/2019_4$largeimg28_Sunday_2019_103349324.jpg";
 
+
 export const DummyReportsData = [
   {
     id: 1,
@@ -13,7 +14,9 @@ export const DummyReportsData = [
     likes: 21,
     comments: 20,
     image: img1,
-    user: "Aditya Verma"
+    user: "Aditya Verma",
+    description:
+      "Garbage bins in the area have been overflowing for days, creating a foul smell. Local residents are frustrated as authorities haven’t taken action yet."
   },
   {
     id: 2,
@@ -24,7 +27,9 @@ export const DummyReportsData = [
     likes: 15,
     comments: 12,
     image: img2,
-    user: "Rohit Sharma"
+    user: "Rohit Sharma",
+    description:
+      "Citizens feel neglected as promises made by the local government remain unfulfilled. Basic civic issues are piling up without proper resolution."
   },
   {
     id: 3,
@@ -35,7 +40,9 @@ export const DummyReportsData = [
     likes: 32,
     comments: 18,
     image: img3,
-    user: "Sneha Kumari"
+    user: "Sneha Kumari",
+    description:
+      "Deep potholes on the main road have been a serious hazard for years. Commuters face daily risks of accidents and vehicle damage."
   },
   {
     id: 4,
@@ -45,8 +52,10 @@ export const DummyReportsData = [
     date: "15-09-2025",
     likes: 10,
     comments: 5,
-    image: img1, // reused
-    user: "Arjun Singh"
+    image: img1,
+    user: "Arjun Singh",
+    description:
+      "Improper disposal of waste has clogged the drainage, leading to waterlogging in nearby streets. Residents worry about health hazards."
   },
   {
     id: 5,
@@ -57,7 +66,9 @@ export const DummyReportsData = [
     likes: 7,
     comments: 3,
     image: img4,
-    user: "Neha Patel"
+    user: "Neha Patel",
+    description:
+      "For over two weeks, the street lights have been non-functional. The dark lanes have raised safety concerns, especially among women and children."
   },
   {
     id: 6,
@@ -67,7 +78,41 @@ export const DummyReportsData = [
     date: "13-09-2025",
     likes: 19,
     comments: 9,
-    image: img3, // reused
-    user: "Karan Mehta"
+    image: img3,
+    user: "Karan Mehta",
+    description:
+      "An uncovered manhole has become a major danger spot in the area. Locals fear accidents, particularly for school children and elderly people."
   }
+];
+
+
+export const DummyCommentsData = [
+  {
+    reportId: 1,
+    comments: [
+      { username: "Anya", comment: "Totally agree! Authorities must act soon." },
+      { username: "Arfina", comment: "This issue has been ignored for months." }
+    ]
+  },
+  {
+    reportId: 2,
+    comments: [
+      { username: "Gaurav", comment: "Well said! Need accountability." }
+    ]
+  },
+  {
+    reportId: 3,
+    comments: [
+      { username: "Arfina", comment: "These potholes are so dangerous!" },
+      { username: "Yash", comment: "Faced an accident here last week." },
+      { username: "Anya", comment: "Municipality should be fined for negligence." }
+    ]
+  },
+  {
+    reportId: 5,
+    comments: [
+      { username: "Anya", comment: "Street feels unsafe without lights at night." }
+    ]
+  }
+  
 ];

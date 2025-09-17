@@ -3,6 +3,8 @@ import { userDashboardLikesCommentData } from '../../userDashboardLikesComment/u
 import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import location from "../../assets/location.png";
+import { Link } from 'react-router-dom';
+
 const HeroDashboard = () => {
   return (
     <section>
@@ -38,8 +40,9 @@ const HeroDashboard = () => {
             <div className="overflow-x-auto flex flex-nowrap gap-10 px-10 pt-20 scrollbar-none ">
               {DummyReportsData.map((report) => {
                 return (
-                  <div
+                  <Link
                     key={report.id}
+                    to={`/reports/${report.id}`} 
                     className="bg-white shadow-md rounded-2xl overflow-hidden min-w-[280px] sm:min-w-[320px] hover:shadow-xl transition-all"
                   >
                     <div className="h-[200px] w-full ">
@@ -81,7 +84,7 @@ const HeroDashboard = () => {
                         <span className="text-gray-400">{report.date}</span>
                       </div>
                     </div>
-                  </div>
+                  </Link>
                 );
               })}
             </div>
