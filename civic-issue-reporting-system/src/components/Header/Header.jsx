@@ -96,32 +96,29 @@ const Nav = () => {
             </NavLink>
           </div>
 
-          {/* Right Section */}
-          <div className="hidden lg:flex gap-4">
-            <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all">
-              Post Issue
-            </button>
-            <p className="flex justify-center items-center text-2xl">|</p>
-            {user ? (
-              <div className="flex items-center gap-4 max-sm:text-sm">
-                <p className="">
-                  Hi,{" "}
-                  {user.firstName?.charAt(0).toUpperCase() +
-                    user.firstName?.slice(1).toLowerCase()}{" "}
-                  {user.lastName?.charAt(0).toUpperCase() +
-                    user.lastName?.slice(1).toLowerCase()}
-                </p>
-                <UserButton afterSignOutUrl="/" />
-              </div>
-            ) : (
-              <button
-                onClick={(e) => openSignIn()}
-                className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer"
-              >
-                Sign In
+            {/* Right Section */}
+            <div className="hidden lg:flex gap-4">
+
+              <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all">
+                Post Issue
               </button>
-            )}
-          </div>
+              <p className="flex justify-center items-center text-2xl">|</p>
+              {user ?
+                <div className='flex items-center gap-4 max-sm:text-sm'>
+
+                  <p className=''>
+                    Hi, {user.firstName? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : "" }
+                    {" "}
+                    {user.lastName? user.lastName.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase() : ""}</p>
+                  <UserButton afterSignOutUrl="/" />
+                </div>
+                :
+                <button onClick={e => openSignIn()} className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer">
+                  Sign In
+                </button>
+              }
+
+            </div>
 
           {/* Hamburger Icon */}
 
