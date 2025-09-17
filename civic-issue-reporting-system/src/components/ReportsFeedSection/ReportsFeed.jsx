@@ -17,17 +17,12 @@ const ReportsFeed = () => {
               backgroundPosition: "center",
             }}
           >
-            {/* Overlay for readability */}
             <div className="absolute inset-0 bg-black/40"></div>
 
-            {/* Content on Image */}
             <div className="relative z-10 p-4 flex flex-col gap-1 text-white">
-              {/* Category Badge */}
               <span
                 className={`px-3 py-1 text-sm rounded-full font-medium w-fit ${
-                  report.category === "Urgent"
-                    ? "bg-red-500"
-                    : "bg-green-500"
+                  report.category === "Urgent" ? "bg-red-500" : "bg-green-500"
                 }`}
               >
                 {report.category}
