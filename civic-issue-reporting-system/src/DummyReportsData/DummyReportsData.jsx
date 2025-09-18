@@ -2,6 +2,8 @@ import img1 from "../assets/2015_1$largeimg31_Jan_2015_002105273.jpg";
 import img2 from "../assets/2018_1$largeimg22_Monday_2018_014703373.jpg";
 import img3 from "../assets/potholes-india-roads-death-4.jpg";
 import img4 from "../assets/2019_4$largeimg28_Sunday_2019_103349324.jpg";
+import img5 from "../assets/potholeimage.jpg";
+import img6 from "../assets/potholes-4.png";
 
 export const DummyReportsData = [
   {
@@ -55,7 +57,7 @@ export const DummyReportsData = [
     date: "15-09-2025",
     likes: 10,
     comments: 5,
-    image: img1,
+    image: img5,
     user: "Arjun Singh",
     description:
       "Improper disposal of waste has clogged the drainage, leading to waterlogging in nearby streets. Residents worry about health hazards."
@@ -83,7 +85,7 @@ export const DummyReportsData = [
     date: "13-09-2025",
     likes: 19,
     comments: 9,
-    image: img3,
+    image: img6,
     user: "Karan Mehta",
     description:
       "An uncovered manhole has become a major danger spot in the area. Locals fear accidents, particularly for school children and elderly people."
@@ -97,7 +99,7 @@ export const DummyReportsData = [
     date: "12-09-2025",
     likes: 12,
     comments: 6,
-    image: img2,
+    image: img1,
     user: "Rohit Verma",
     description:
       "Malfunctioning traffic lights causing chaos and frequent traffic violations."
@@ -111,7 +113,7 @@ export const DummyReportsData = [
     date: "11-09-2025",
     likes: 9,
     comments: 4,
-    image: img3,
+    image: img2,
     user: "Anya Sharma",
     description:
       "Commuters face risks due to potholes near bus stops. Needs urgent repair."
@@ -125,7 +127,7 @@ export const DummyReportsData = [
     date: "10-09-2025",
     likes: 18,
     comments: 10,
-    image: img1,
+    image: img3,
     user: "Rohit Verma",
     description:
       "Sewage water is overflowing, causing unhygienic conditions and mosquito breeding."
