@@ -1,15 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext } from "react";
 import { FiSearch } from "react-icons/fi";
 import { MdOutlineKeyboardArrowDown } from "react-icons/md";
 import { AppContext } from "../../Context/AppContext";
 
 const SearchbarFilter = ({ onSearch }) => {
-  const {searchText,setSearchText}=useContext(AppContext)
-  const {status,setStatus}=useContext(AppContext)
-  
+  const { searchText, setSearchText, status, setStatus } = useContext(AppContext);
+
   const handleSearch = () => {
-    onSearch({ searchText, status, date });
+    onSearch({ searchText, status });
   };
+
   return (
     <div className="flex flex-col md:flex-row items-stretch gap-3 w-full bg-gray-50 p-4 rounded-xl shadow-sm">
       {/* Search Input */}
@@ -23,6 +23,8 @@ const SearchbarFilter = ({ onSearch }) => {
           className="flex-1 outline-none text-gray-700 placeholder-gray-400"
         />
       </div>
+
+      {/* Status Dropdown */}
       <div className="relative w-full md:w-48">
         <select
           value={status}
@@ -38,14 +40,7 @@ const SearchbarFilter = ({ onSearch }) => {
         </select>
         <MdOutlineKeyboardArrowDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
       </div>
-
-      {/* Apply Button */}
-      <button
-        onClick={handleSearch}
-        className="w-full md:w-auto border border-gray-300 text-gray-700 px-5 py-2 rounded-lg hover:bg-gray-100 transition"
-      >
-        Apply
-      </button>
+     
     </div>
   );
 };

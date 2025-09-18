@@ -1,13 +1,24 @@
-import React from "react";
+import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
+import { AppContext } from "../../Context/AppContext";
 
 const ReportsFeed = () => {
+  const { searchText, status } = useContext(AppContext);
+  const filteredReports = DummyReportsData.filter((report) => {
+    const matchesLocation = report.location
+      .toLowerCase()
+      .includes(searchText.toLowerCase());
+    const matchesStatus =
+      status === "All" || report.issue.toLowerCase() === status.toLowerCase();
+    return matchesLocation && matchesStatus;
+  });
+
   return (
     <section className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 px-2 mt-2">
-      {DummyReportsData.map((report) => {
-        return (
+      {filteredReports.length > 0 ? (
+        filteredReports.map((report) => (
           <div
             key={report.id}
             className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all min-w-[280px] sm:min-w-[320px] h-[320px] flex flex-col justify-end"
@@ -49,8 +60,12 @@ const ReportsFeed = () => {
               </Link>
             </div>
           </div>
-        );
-      })}
+        ))
+      ) : (
+        <p className="col-span-full text-center text-gray-500 py-6">
+          No reports found matching your filters.
+        </p>
+      )}
     </section>
   );
 };

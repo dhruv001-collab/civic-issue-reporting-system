@@ -157,8 +157,8 @@ const Nav = () => {
             <Link to="/faqs" onClick={() => setIsOpen(false)}>
               FAQs
             </Link>
-            <Link to="/contact" onClick={() => setIsOpen(false)}>
-              Contact
+            <Link to="/reports" onClick={() => setIsOpen(false)}>
+              Reports
             </Link>
 
             <div className="flex flex-col gap-3 mt-3">

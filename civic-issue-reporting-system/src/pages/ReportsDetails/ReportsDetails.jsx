@@ -7,6 +7,7 @@ import {
   DummyCommentsData,
   DummyReportsData,
 } from "../../DummyReportsData/DummyReportsData";
+import Footer from "../../components/Footer/Footer";
 
 const ReportsDetails = () => {
   const { id } = useParams();
@@ -21,6 +22,7 @@ const ReportsDetails = () => {
         <LeftSection report={report} />
         <RightSection comments={commentsData?.comments || []} />
       </section>
+      <Footer/>
     </>
   );
 };

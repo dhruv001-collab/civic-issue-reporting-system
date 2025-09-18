@@ -3,6 +3,7 @@ import Nav from "../../components/Header/Header";
 import { userDashboardLikesCommentData } from "../../userDashboardLikesComment/userDashboardLikesCommentData";
 import SearchbarFilter from "../../components/SearchbarFilterReports/SearchbarFilter";
 import ReportsFeed from "../../components/ReportsFeedSection/ReportsFeed";
+import Footer from "../../components/Footer/Footer";
 
 const Reports = () => {
   return (
@@ -29,6 +30,8 @@ const Reports = () => {
       <section>
         <ReportsFeed/>
       </section>
+      <Footer/>
+      
     </>
   );
 };
