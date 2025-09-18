@@ -23,7 +23,7 @@ const Nav = () => {
               <img 
                 src={logo}
                 alt="logo"
-                className="w-full h-full object-contain"
+                className="w-full h-full object-contain cursor-pointer"
               />
             </div>
           </div>

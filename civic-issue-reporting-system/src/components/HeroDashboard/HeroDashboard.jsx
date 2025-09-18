@@ -4,14 +4,23 @@ import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import location from "../../assets/location.png";
 import { Link } from 'react-router-dom';
+import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
 
 const HeroDashboard = () => {
+   const { user } = useUser();
   return (
     <section>
         {/* TopSection */}
       <div className="flex flex-col px-6 md:px-10 pt-10 pb-5  md:pt-10 text-center md:text-left shadow-md justify-center items-center">
         <h1 className="text-4xl md:text-5xl font-extrabold text-gray-900 leading-tight mb-2 max-w-3xl">
-          <span className="text-teal-500">Hello,</span> Admin
+          {user ? 
+          <span>
+
+          <span className="text-teal-500">Hello,</span> {user.firstName?.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase()} {" "} {user.lastName?.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase()}
+          </span> :
+          "Welcome" 
+          }
+          
         </h1>
         <p className="text-lg md:text-xl text-gray-600 max-w-2xl">
           Another day to make your country better!

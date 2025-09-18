@@ -1,10 +1,14 @@
 import express from "express"
 import cors from "cors"
 import 'dotenv/config'
+import connectDB from "./config/db.js"
 
 
 // Initialize express app
 const app = express()
+
+// Database connection
+await connectDB();
 
 // Middleware
 app.use(cors())
@@ -13,7 +17,7 @@ app.use(express.json())
 // Routes
 
 app.get('/', (req, res) => {
-  res.send('Hello World!')
+  res.send('API is running...')
 })
 
 
