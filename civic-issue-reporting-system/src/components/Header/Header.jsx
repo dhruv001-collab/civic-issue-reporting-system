@@ -29,7 +29,7 @@ const Nav = () => {
           </div>
 
           {/* Middle Section */}
-          <div className="hidden lg:flex gap-8 font-medium text-gray-700 text-lg">
+          <div className="hidden lg:flex gap-8 font-bold text-gray-700 text-lg">
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
@@ -107,7 +107,11 @@ const Nav = () => {
                 <div className='flex items-center gap-4 max-sm:text-sm'>
 
                   <p className=''>
-                    Hi, {user.firstName? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : "" }
+                    <span className="font-bold">
+                      Hi
+                    </span>
+                      
+                    , {user.firstName? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : "" }
                     {" "}
                     {user.lastName? user.lastName.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase() : ""}</p>
                   <UserButton afterSignOutUrl="/" />

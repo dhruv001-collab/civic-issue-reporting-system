@@ -8,31 +8,37 @@ export const FeaturesHomeData=[
   {
     "image":img1,
     "title": "Photo & Video Reports",
-    "description": "Upload clear photos or videos of potholes with exact location data to help authorities take action."
+    "description": "Upload clear photos or videos of potholes with exact location data to help authorities take action.",
+    "route" : "/report-issue"
   },
   {
     "image":img2,
     "title": "GPS Location Tracking",
-    "description": "Automatically capture precise coordinates for accurate pothole mapping."
+    "description": "Automatically capture precise coordinates for accurate pothole mapping.",
+    "route" : "/report-issue"
   },
   {
     "image": img3,
     "title": "Authority Tracking",
-    "description": "Tag responsible officials including contractors, engineers, corporators, MLAs, and MPs for accountability."
+    "description": "Tag responsible officials including contractors, engineers, corporators, MLAs, and MPs for accountability.",
+    "route" : "/report-issue"
   },
   {
     "image": img4,
     "title": "Public Gallery",
-    "description": "Browse all reported potholes in your area and stay updated on road conditions and repairs."
+    "description": "Browse all reported potholes in your area and stay updated on road conditions and repairs.",
+    "route" : "/report-issue"
   },
   {
     "image": img5,
     "title": "Recognition System",
-    "description": "Get recognized for your contributions to improving India's road infrastructure."
+    "description": "Get recognized for your contributions to improving India's road infrastructure.",
+    "route" : "/report-issue"
   },
   {
     "image": img6,
     "title": "Easy Reporting",
-    "description": "Simple, user-friendly interface to report potholes quickly and efficiently."
+    "description": "Simple, user-friendly interface to report potholes quickly and efficiently.",
+    "route" : "/report-issue"
   }
 ]
