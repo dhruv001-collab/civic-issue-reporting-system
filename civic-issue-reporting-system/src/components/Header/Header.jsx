@@ -57,19 +57,6 @@ const Nav = () => {
             </NavLink>
 
             <NavLink
-              to="/alerts"
-              className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
-                }`
-              }
-            >
-              Local Alerts
-            </NavLink>
-
-            <NavLink
               to="/faqs"
               className={({ isActive }) =>
                 `transition-all ${
@@ -93,6 +80,18 @@ const Nav = () => {
               }
             >
               Reports
+            </NavLink>
+            <NavLink
+              to="/contact"
+              className={({ isActive }) =>
+                `transition-all ${
+                  isActive
+                    ? "text-blue-500 font-semibold"
+                    : "hover:text-blue-500"
+                }`
+              }
+            >
+              Contact
             </NavLink>
           </div>
 
@@ -150,9 +149,6 @@ const Nav = () => {
             </Link>
             <Link to="/stats" onClick={() => setIsOpen(false)}>
               Stats
-            </Link>
-            <Link to="/alerts" onClick={() => setIsOpen(false)}>
-              Local Alerts
             </Link>
             <Link to="/faqs" onClick={() => setIsOpen(false)}>
               FAQs

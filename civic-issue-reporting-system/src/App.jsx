@@ -5,6 +5,7 @@ import Login from './pages/AuthLogin/Login';
 import Reports from './pages/Reports/Reports';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ReportsDetails from './pages/ReportsDetails/ReportsDetails';
+import Faq from './pages/FAQs/Faq';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
       <Route path='/reports' element={<Reports/>}/>
       <Route path='/dashboard' element={<Dashboard/>}/>
       <Route path="/reports/:id" element={<ReportsDetails />} />
+      <Route path='/faqs' element={<Faq/>}/>
     </Routes>
    
   );
