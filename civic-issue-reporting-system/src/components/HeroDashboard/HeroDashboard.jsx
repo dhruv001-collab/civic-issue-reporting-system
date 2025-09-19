@@ -16,7 +16,7 @@ const HeroDashboard = () => {
           {user ? 
           <span>
 
-          <span className="text-teal-500">Hello,</span> {user.firstName?.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase()} {" "} {user.lastName?.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase()}
+          <span className="text-teal-500">Hello,</span> {user.firstName? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : ""} {" "} {user.lastName ? user.lastName.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase() : ""}
           </span> :
           "Welcome" 
           }
