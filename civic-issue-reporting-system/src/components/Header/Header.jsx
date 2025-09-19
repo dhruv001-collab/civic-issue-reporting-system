@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState, useEffect } from "react";
 import { NavLink, Link, Navigate, useNavigate } from "react-router-dom";
 import { FaBars, FaTimes } from "react-icons/fa";
 import logo from "../../assets/logo.png";
@@ -13,9 +13,23 @@ const Nav = () => {
 
   const { isOpen, setIsOpen } = useContext(AppContext);
 
+
+  const [isScrolled, setIsScrolled] = useState(false);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      const scrollTop = window.scrollY;
+      setIsScrolled(scrollTop > 10); // Adjust threshold as needed
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
+
   return (
     <>
-      <nav className={`bg-white shadow-md px-3 lg:px-12 `}>
+      <nav className={`bg-white shadow-md px-3 lg:px-12 sticky top-0 left-0 w-full z-30 ${isScrolled ? "bg-white/60 backdrop-blur-sm shadow-md" : "bg-white"}`}>
         <div className="flex justify-between items-center">
           {/* Left Section*/}
           <div className="flex items-center">
@@ -29,7 +43,20 @@ const Nav = () => {
           </div>
 
           {/* Middle Section */}
-          <div className="hidden lg:flex gap-8 font-bold text-gray-700 text-lg">
+          <div className="hidden lg:flex gap-6 font-semibold text-gray-700 text-lg">
+            <NavLink
+              to="/"
+              className={({ isActive }) =>
+                `transition-all ${
+                  isActive
+                    ? "text-blue-500 font-semibold"
+                    : "hover:text-blue-500"
+                }`
+              }
+            >
+              Home
+            </NavLink>
+
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
@@ -116,7 +143,7 @@ const Nav = () => {
                   <UserButton afterSignOutUrl="/" />
                 </div>
                 :
-                <button onClick={e => openSignIn()} className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer">
+                <button onClick={() => openSignIn()} className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer">
                   Sign In
                 </button>
               }
@@ -148,6 +175,9 @@ const Nav = () => {
           }`}
         >
           <div className="flex flex-col gap-4 font-medium text-gray-700 text-lg">
+            <Link to="/" onClick={() => setIsOpen(false)}>
+              Home
+            </Link>
             <Link to="/dashboard" onClick={() => setIsOpen(false)}>
               Dashboard
             </Link>
@@ -177,7 +207,7 @@ const Nav = () => {
                 </div>
               ) : (
                 <button
-                  onClick={(e) => openSignIn()}
+                  onClick={() => openSignIn()}
                   className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer"
                 >
                   Sign In
