@@ -34,7 +34,7 @@ const Nav = () => {
           {/* Left Section*/}
           <div className="flex items-center">
             <div className="h-[100px] w-[120px] sm:h-[70px] sm:w-[160px] lg:h-[100px] lg:w-[180px] " onClick={() => navigate("/")} >
-              <img 
+              <img
                 src={logo}
                 alt="logo"
                 className="w-full h-full object-contain cursor-pointer"
@@ -47,10 +47,9 @@ const Nav = () => {
             <NavLink
               to="/"
               className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
+                `transition-all ${isActive
+                  ? "text-blue-500 font-semibold"
+                  : "hover:text-blue-500"
                 }`
               }
             >
@@ -60,10 +59,9 @@ const Nav = () => {
             <NavLink
               to="/dashboard"
               className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
+                `transition-all ${isActive
+                  ? "text-blue-500 font-semibold"
+                  : "hover:text-blue-500"
                 }`
               }
             >
@@ -73,10 +71,9 @@ const Nav = () => {
             <NavLink
               to="/stats"
               className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
+                `transition-all ${isActive
+                  ? "text-blue-500 font-semibold"
+                  : "hover:text-blue-500"
                 }`
               }
             >
@@ -86,10 +83,9 @@ const Nav = () => {
             <NavLink
               to="/faqs"
               className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
+                `transition-all ${isActive
+                  ? "text-blue-500 font-semibold"
+                  : "hover:text-blue-500"
                 }`
               }
             >
@@ -99,10 +95,9 @@ const Nav = () => {
             <NavLink
               to="/reports"
               className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
+                `transition-all ${isActive
+                  ? "text-blue-500 font-semibold"
+                  : "hover:text-blue-500"
                 }`
               }
             >
@@ -111,10 +106,9 @@ const Nav = () => {
             <NavLink
               to="/contact"
               className={({ isActive }) =>
-                `transition-all ${
-                  isActive
-                    ? "text-blue-500 font-semibold"
-                    : "hover:text-blue-500"
+                `transition-all ${isActive
+                  ? "text-blue-500 font-semibold"
+                  : "hover:text-blue-500"
                 }`
               }
             >
@@ -122,33 +116,34 @@ const Nav = () => {
             </NavLink>
           </div>
 
-            {/* Right Section */}
-            <div className="hidden lg:flex gap-4">
-
+          {/* Right Section */}
+          <div className="hidden lg:flex gap-4">
+            <Link to="/report-issue">
               <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all">
                 Post Issue
               </button>
-              <p className="flex justify-center items-center text-2xl">|</p>
-              {user ?
-                <div className='flex items-center gap-4 max-sm:text-sm'>
+            </Link>
+            <p className="flex justify-center items-center text-2xl">|</p>
+            {user ?
+              <div className='flex items-center gap-4 max-sm:text-sm'>
 
-                  <p className=''>
-                    <span className="font-bold">
-                      Hi
-                    </span>
-                      
-                    , {user.firstName? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : "" }
-                    {" "}
-                    {user.lastName? user.lastName.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase() : ""}</p>
-                  <UserButton afterSignOutUrl="/" />
-                </div>
-                :
-                <button onClick={() => openSignIn()} className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer">
-                  Sign In
-                </button>
-              }
+                <p className=''>
+                  <span className="font-bold">
+                    Hi
+                  </span>
 
-            </div>
+                  , {user.firstName ? user.firstName.charAt(0).toUpperCase() + user.firstName?.slice(1).toLowerCase() : ""}
+                  {" "}
+                  {user.lastName ? user.lastName.charAt(0).toUpperCase() + user.lastName?.slice(1).toLowerCase() : ""}</p>
+                <UserButton afterSignOutUrl="/" />
+              </div>
+              :
+              <button onClick={() => openSignIn()} className="px-6 py-2 border border-black rounded-full hover:bg-gray-100 transition-all cursor-pointer">
+                Sign In
+              </button>
+            }
+
+          </div>
 
           {/* Hamburger Icon */}
 
@@ -170,9 +165,8 @@ const Nav = () => {
 
         {/* Mobile Menu */}
         <div
-          className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out  ${
-            isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
-          }`}
+          className={`lg:hidden overflow-hidden transition-all duration-500 ease-in-out  ${isOpen ? "max-h-[500px] opacity-100 mt-4" : "max-h-0 opacity-0"
+            }`}
         >
           <div className="flex flex-col gap-4 font-medium text-gray-700 text-lg">
             <Link to="/" onClick={() => setIsOpen(false)}>

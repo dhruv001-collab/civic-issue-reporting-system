@@ -53,7 +53,7 @@ export const DummyReportsData = [
     title: "Drainage system blocked due to garbage dumping!",
     category: "Urgent",
     issue: "Sanitation",
-    location: "Lalbagh, Lucknow, UP",
+    location: "Sanitation",
     date: "15-09-2025",
     likes: 10,
     comments: 5,

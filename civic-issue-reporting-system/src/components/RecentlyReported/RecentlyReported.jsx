@@ -3,8 +3,26 @@ import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import location from "../../assets/location.png";
 import { Link } from "react-router-dom";
+import { useContext, useEffect } from "react";
+import { AppContext } from "../../Context/AppContext";
 
 const RecentlyReported = () => {
+   const {  setAllproducts, allproducts } = useContext(AppContext);
+
+   const fetchinfo = async () => {
+       await fetch('http://localhost:5000/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
+     }
+   
+   
+     useEffect(() => {
+       fetchinfo();
+     }, []);
+   
+     useEffect(() => {
+       console.log("Updated allproducts:", allproducts);
+     }, [allproducts]);
+
+
   return (
     <section className="h-screen-auto min-h-[65vh] md:min-h-[50vh] lg:min-h-[40vh]">
       <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 px-4 sm:px-6 lg:px-10">
@@ -16,17 +34,17 @@ const RecentlyReported = () => {
         </Link>
       </div>
       <div className="overflow-x-auto flex flex-nowrap gap-10 px-6 pt-10 scrollbar-none ">
-        {DummyReportsData.map((report) => {
+        {allproducts.map((report) => {
         return (
           <Link
-            key={report.id}
-            to={`/reports/${report.id}`} 
+            key={report._id}
+            to={`/reports/${report._id}`} 
             className="bg-white shadow-md rounded-2xl overflow-hidden min-w-[280px] sm:min-w-[320px] hover:shadow-xl transition-all"
           >
             <div className="h-[200px] w-full">
               <img
                 src={report.image}
-                alt={report.title}
+                alt={report.Issue_title}
                 className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110 "
               />
             </div>
@@ -41,7 +59,7 @@ const RecentlyReported = () => {
                 {report.category}
               </span>
               <h2 className="font-semibold text-gray-800 line-clamp-2">
-                {report.title}
+                {report.Issue_title}
               </h2>
 
               <p className="text-sm text-gray-500 flex">
@@ -53,10 +71,10 @@ const RecentlyReported = () => {
               <div className="flex justify-between items-center text-sm text-gray-600 mt-2">
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
-                    <FaThumbsUp /> {report.likes}
+                    <FaThumbsUp /> 5
                   </span>
                   <span className="flex items-center gap-1">
-                    <FaComment /> {report.comments}
+                    <FaComment />20
                   </span>
                 </div>
                 <span className="text-gray-400">{report.date}</span>

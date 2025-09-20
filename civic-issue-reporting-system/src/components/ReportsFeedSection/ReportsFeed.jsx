@@ -53,7 +53,7 @@ const ReportsFeed = () => {
                 {report.category}
               </span>
               <h2 className="font-semibold text-white line-clamp-2">
-                {report.title}
+                {report.Issue_title}
               </h2>
               <div className="flex justify-between items-center text-sm mb-3">
                 <div className="flex items-center gap-3">

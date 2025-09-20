@@ -5,9 +5,24 @@ import { FaThumbsUp, FaComment } from "react-icons/fa";
 import location from "../../assets/location.png";
 import { Link } from 'react-router-dom';
 import { useClerk, UserButton, useUser } from "@clerk/clerk-react";
+import { useContext, useEffect } from 'react';
+import { AppContext } from '../../Context/AppContext';
 
 const HeroDashboard = () => {
+   const { setAllproducts, allproducts } = useContext(AppContext);
    const { user } = useUser();
+
+   const fetchinfo = async () => {
+    await fetch('http://localhost:5000/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
+  }
+
+  useEffect(() => {
+    fetchinfo();
+  }, []);
+
+  useEffect(() => {
+    console.log("Updated allproducts:", allproducts);
+  }, [allproducts]);
   return (
     <section>
         {/* TopSection */}
@@ -47,17 +62,17 @@ const HeroDashboard = () => {
               </h1>
             </div>
             <div className="overflow-x-auto flex flex-nowrap gap-10 px-10 pt-20 scrollbar-none ">
-              {DummyReportsData.map((report) => {
+              {allproducts.map((report) => {
                 return (
                   <Link
-                    key={report.id}
-                    to={`/reports/${report.id}`} 
+                    key={report._id}
+                    to={`/reports/${report._id}`} 
                     className="bg-white shadow-md rounded-2xl overflow-hidden min-w-[280px] sm:min-w-[320px] hover:shadow-xl transition-all"
                   >
                     <div className="h-[200px] w-full ">
                       <img
                         src={report.image}
-                        alt={report.title}
+                        alt={report.Issue_title}
                         className="w-full h-full object-cover transform transition-transform duration-500 hover:scale-110 "
                       />
                     </div>
@@ -72,7 +87,7 @@ const HeroDashboard = () => {
                         {report.category}
                       </span>
                       <h2 className="font-semibold text-gray-800 line-clamp-2">
-                        {report.title}
+                        {report.Issue_title}
                       </h2>
       
                       <p className="text-sm text-gray-500 flex">
@@ -84,10 +99,10 @@ const HeroDashboard = () => {
                       <div className="flex justify-between items-center text-sm text-gray-600 mt-2">
                         <div className="flex items-center gap-3">
                           <span className="flex items-center gap-1">
-                            <FaThumbsUp /> {report.likes}
+                            <FaThumbsUp /> 5
                           </span>
                           <span className="flex items-center gap-1">
-                            <FaComment /> {report.comments}
+                            <FaComment /> 65
                           </span>
                         </div>
                         <span className="text-gray-400">{report.date}</span>
