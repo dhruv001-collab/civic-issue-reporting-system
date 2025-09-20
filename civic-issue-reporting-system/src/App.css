@@ -1,3 +1,8 @@
 .scrollbar-none::-webkit-scrollbar{
     display: none;
 }
+
+.my-toast {
+  background-color: black !important; /* teal */
+  color: #fff !important;
+}

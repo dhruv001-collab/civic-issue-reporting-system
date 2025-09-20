@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from 'react'
 import { useRef } from 'react'
 import { useUser } from "@clerk/clerk-react";
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 // import { set } from 'mongoose';
 
 
@@ -52,6 +54,15 @@ const ReportIssueleft = () => {
   }
 
   const addProduct = async () => {
+
+    if (!isSignedIn) {
+      toast.error("LogIn / SignUp Submit the Issue", {
+        position: "top-right",
+        autoClose: 3000,
+      });
+      return;
+    }
+
     console.log(issueDetails)
     let responceData;
     let product = {
@@ -84,7 +95,15 @@ const ReportIssueleft = () => {
         }, body: JSON.stringify(product),
 
       }).then((resp) => resp.json()).then((data) => {
-        data.success ? alert("Product Added") : alert("failed")
+         if (data.success) {
+          toast.success("Issue posted successfully!", {
+            position: "top-right",
+            autoClose: 3000,
+          });
+        } else {
+          toast.error("❌ Failed to post issue");
+        }
+        
         if (data.success) {
           setIssueDetails({
             Issue_title: "",
@@ -95,7 +114,9 @@ const ReportIssueleft = () => {
           })
           setImage(null);
           fileInputRef.current.value = null;
-        }
+        } 
+        
+
       })
     }
   }
