@@ -127,23 +127,23 @@ const ReportIssueleft = () => {
 
       <div>
         <h2 className='font-medium'>Issue Title <span className='text-red-400 text-xl'>*</span></h2>
-        <input value={issueDetails.Issue_title} name='Issue_title' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Enter Title' />
+        <input required value={issueDetails.Issue_title} name='Issue_title' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Enter Title' />
       </div>
 
       <div>
         <h2 className='font-medium'>Category <span className='text-red-400 text-xl'>*</span></h2>
 
-        <input value={issueDetails.category} name='category' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Select a category' />
+        <input required value={issueDetails.category} name='category' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Select a category' />
       </div>
 
       <div>
         <h2 className='font-medium'>Location <span className='text-red-400 text-xl'>*</span></h2>
-        <input value={issueDetails.location} name='location' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Street address or nearby landmark' />
+        <input required value={issueDetails.location} name='location' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Street address or nearby landmark' />
       </div>
 
       <div>
         <h2 className='font-medium sm:text-sm'>Description <span className='text-red-400 text-xl'>*</span></h2>
-        <input value={issueDetails.description} name='description' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Provide a detailed description' />
+        <input required value={issueDetails.description} name='description' onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' type="text" placeholder='Provide a detailed description' />
       </div>
 
       <div>
@@ -174,7 +174,7 @@ const ReportIssueleft = () => {
           }
 
         </label>
-        <input ref={fileInputRef} onChange={ImageHandler} suppressHydrationWarning type="file" name='image' id='file-input' hidden />
+        <input required ref={fileInputRef} onChange={ImageHandler} suppressHydrationWarning type="file" name='image' id='file-input' hidden />
 
       </div>
 
