@@ -10,7 +10,6 @@ import Faq from './pages/FAQs/Faq';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Contact from './pages/Contact/Contact';
 
 
 function App() {
@@ -25,7 +24,6 @@ function App() {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/report-issue' element={<ReportIssue />} />
       <Route path='/faqs' element={<Faq />} />
-      <Route path='/contact' element={<Contact/>} />
 
     </Routes>
 
