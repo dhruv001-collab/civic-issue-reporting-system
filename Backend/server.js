@@ -5,12 +5,11 @@ import express from "express"
 import cors from "cors"
 import connectDB from "./config/db.js"
 import { clerkWebhooks } from "./controllers/webhooks.js"
-import ReportIssue from "./models/ReportIssue.js"
-import Path from "path"
 import multer from "multer";
 import {v2 as cloudinary} from "cloudinary"
 import streamifier from "streamifier";
-
+import ReportIssue from "./models/ReportIssue.js"
+import Contact from "./models/Contact.js"
 
 // Configure Cloudinary
 cloudinary.config({ 
@@ -139,6 +138,28 @@ app.get('/allIssues', async (req,res) => {
   let issues = await ReportIssue.find({});
   console.log("all Issues fetched");
   res.json(issues);
+})
+
+// creating api for save contact us messages
+app.post('/contact', async (req,res) => {
+   const lastIssue = await Contact.findOne().sort({ _id: -1 });
+
+    const nextId = lastIssue ? lastIssue._id + 1 : 1;
+
+   const reportData = new Contact({
+      _id : nextId,
+      name : req.body.name,
+      email : req.body.email,
+      message : req.body.message,
+      subject : req.body.subject,
+   })
+   console.log(reportData);
+   await reportData.save();
+   console.log("Issue contact Successfully");
+   res.json({
+    success:true,
+    message:'Issue contact Successfully'
+  })
 })
 
 

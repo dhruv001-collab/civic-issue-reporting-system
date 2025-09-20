@@ -4,20 +4,74 @@ import phone from '../../assets/phone_icon.png';
 import location from '../../assets/location_icon.png';
 import ContactUs from '../../assets/contact_us.png';
 import reCaptcha from '../../assets/RecaptchaLogo.svg.webp';
+import { toast } from "react-toastify";
 
 
 const ContactPage = () => {
     const [open, setOpen] = useState(false);
     const [isHuman, setIsHuman] = useState(false);
     const [selected, setSelected] = useState('');
+    const [contacts, setContacts] = useState({
+        name: '',
+        email: '',
+        subject: '',
+        message: ''
+    })
+
+    const changeHandler = (e) => {
+        setContacts({ ...contacts, [e.target.name]: e.target.value })
+    }
 
 
     const options = ['General Query', 'Technical Support', 'Return Status', 'Feedback'];
 
     const handleSelect = (option) => {
-        setSelected(option);
+        setContacts({ ...contacts, subject: option });
         setOpen(false);
     };
+
+    const addProduct = async () => {
+        if (!isHuman) {
+            toast.error("Please verify that you are not a robot before submitting.", {
+                position: "top-right",
+                autoClose: 3000,
+            });
+            return;
+        }
+        console.log(contacts);
+        try {
+            const response = await fetch("http://localhost:5000/contact", {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json",
+                },
+                body: JSON.stringify(contacts),
+            });
+
+            const data = await response.json();
+
+            if (response.ok) {
+                toast.success("Your message has been submitted successfully!", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+                setContacts({ name: "", email: "", subject: "", message: "" }); // reset form
+                setIsHuman(false);
+            } else {
+                toast.error(data.message || "Failed to submit message.", {
+                    position: "top-right",
+                    autoClose: 3000,
+                });
+            }
+        } catch (error) {
+            console.error(error);
+            toast.error("Something went wrong. Please try again later.", {
+                position: "top-right",
+                autoClose: 3000,
+            });
+        }
+
+    }
 
 
     return (
@@ -77,7 +131,9 @@ const ContactPage = () => {
                         <div className='pb-2'>
                             <h2 className='font-bold text-sm'>Full Name <span className='text-red-400 text-lg'>*</span></h2>
                             <input
-
+                                value={contacts.name}
+                                name='name'
+                                onChange={changeHandler}
                                 type="text"
                                 placeholder="Full Name*"
                                 required
@@ -89,6 +145,9 @@ const ContactPage = () => {
                         <div className='pb-2'>
                             <h2 className='font-bold text-sm'>Email <span className='text-red-400 text-lg'>*</span></h2>
                             <input
+                                value={contacts.email}
+                                name='email'
+                                onChange={changeHandler}
                                 type="email"
                                 placeholder="Email*"
                                 required
@@ -98,8 +157,11 @@ const ContactPage = () => {
                         <div className='pb-2'>
                             <h2 className='font-bold text-sm'>Subject <span className='text-red-400 text-lg'>*</span></h2>
                             <input
+
+                                name='subject'
+                                onChange={changeHandler}
                                 onClick={() => setOpen(!open)}
-                                value={selected}
+                                value={contacts.subject}
                                 type="text"
                                 placeholder="Subject*"
                                 required
@@ -128,6 +190,9 @@ const ContactPage = () => {
                         <div className='pb-2'>
                             <h2 className='font-bold text-sm'>Message <span className='text-red-400 text-lg'>*</span></h2>
                             <textarea
+                                value={contacts.message}
+                                name='message'
+                                onChange={changeHandler}
                                 rows="4"
                                 placeholder="Message"
                                 required
@@ -151,7 +216,7 @@ const ContactPage = () => {
                             </div>
                         </label>
 
-                        <button type="submit" className="w-full bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition">
+                        <button onClick={() => { addProduct() }} type="submit" className="w-full bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition">
                             Submit
                         </button>
                     </div>

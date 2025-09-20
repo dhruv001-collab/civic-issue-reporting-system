@@ -13,8 +13,16 @@ const ContactSchema = new mongoose.Schema({
         type:String,
         required : true
     },
+    subject:{
+        type:String,
+        required : true,
+    },
     message:{
         type:String,
         required : true,
     }
 })
+
+const Contact = mongoose.model("Contact",ContactSchema);
+
+export default Contact;

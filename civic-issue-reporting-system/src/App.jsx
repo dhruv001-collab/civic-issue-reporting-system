@@ -6,6 +6,7 @@ import Reports from './pages/Reports/Reports';
 import Dashboard from './pages/Dashboard/Dashboard';
 import ReportsDetails from './pages/ReportsDetails/ReportsDetails';
 import ReportIssue from './pages/ReportIssue/ReportIssue';
+import Contact from './pages/Contact/Contact';``
 import Faq from './pages/FAQs/Faq';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { ToastContainer } from "react-toastify";
@@ -24,6 +25,7 @@ function App() {
       <Route path='/dashboard' element={<Dashboard />} />
       <Route path='/report-issue' element={<ReportIssue />} />
       <Route path='/faqs' element={<Faq />} />
+      <Route path='/contact' element={<Contact/>} />
 
     </Routes>
 
