@@ -1,12 +1,27 @@
-import React, { useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
 import { AppContext } from "../../Context/AppContext";
 
 const ReportsFeed = () => {
-  const { searchText, status } = useContext(AppContext);
-  const filteredReports = DummyReportsData.filter((report) => {
+  const { searchText, status, setAllproducts, allproducts } = useContext(AppContext);
+
+  const fetchinfo = async () => {
+    await fetch('http://localhost:5000/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
+  }
+
+
+  useEffect(() => {
+    fetchinfo();
+  }, []);
+
+  useEffect(() => {
+    console.log("Updated allproducts:", allproducts);
+  }, [allproducts]);
+
+
+  const filteredReports = allproducts.filter((report) => {
     const matchesLocation = report.location
       .toLowerCase()
       .includes(searchText.toLowerCase());
@@ -20,7 +35,7 @@ const ReportsFeed = () => {
       {filteredReports.length > 0 ? (
         filteredReports.map((report) => (
           <div
-            key={report.id}
+            key={report._id}
             className="relative bg-gray-900 rounded-2xl overflow-hidden shadow-md hover:shadow-xl transition-all min-w-[280px] sm:min-w-[320px] h-[320px] flex flex-col justify-end"
             style={{
               backgroundImage: `url(${report.image})`,
@@ -32,9 +47,8 @@ const ReportsFeed = () => {
 
             <div className="relative z-10 p-4 flex flex-col gap-1 text-white">
               <span
-                className={`px-3 py-1 text-sm rounded-full font-medium w-fit ${
-                  report.category === "Urgent" ? "bg-red-500" : "bg-green-500"
-                }`}
+                className={`px-3 py-1 text-sm rounded-full font-medium w-fit ${report.category === "Urgent" ? "bg-red-500" : "bg-green-500"
+                  }`}
               >
                 {report.category}
               </span>
@@ -44,16 +58,16 @@ const ReportsFeed = () => {
               <div className="flex justify-between items-center text-sm mb-3">
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
-                    <FaThumbsUp /> {report.likes}
+                    <FaThumbsUp /> 25
                   </span>
                   <span className="flex items-center gap-1">
-                    <FaComment /> {report.comments}
+                    <FaComment /> 20
                   </span>
                 </div>
                 <span className="text-gray-300">{report.date}</span>
               </div>
               <Link
-                to={`/reports/${report.id}`}
+                to={`/reports/${report._id}`}
                 className="bg-teal-500 hover:bg-teal-600 text-white text-center py-2 rounded-lg font-medium transition-colors"
               >
                 View Details

@@ -7,11 +7,13 @@ import Dashboard from './pages/Dashboard/Dashboard';
 import ReportsDetails from './pages/ReportsDetails/ReportsDetails';
 import ReportIssue from './pages/ReportIssue/ReportIssue';
 import Faq from './pages/FAQs/Faq';
+import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 
 
 function App() {
 
-  return (
+  return (<>
+  <ScrollToTop/>
     <Routes>
       <Route path='/' element={<Home/>}/>
       <Route path='/login' element={<Login/>}/>
@@ -23,6 +25,7 @@ function App() {
 
     </Routes>
    
+  </>
   );
 }
 
