@@ -8,6 +8,17 @@ import { clerkWebhooks } from "./controllers/webhooks.js"
 import ReportIssue from "./models/ReportIssue.js"
 import Path from "path"
 import multer from "multer";
+import {v2 as cloudinary} from "cloudinary"
+import streamifier from "streamifier";
+
+
+// Configure Cloudinary
+cloudinary.config({ 
+        cloud_name: 'dbsghk0em', 
+        api_key: '733595422355339', 
+        api_secret: 'ews3ZpKeI98XbpI-WMDUdFQQZSA',// Click 'View API Keys' above to copy your API secret
+        cloudinary_url: process.env.CLOUDINARY_URL
+    });
 
 // Initialize express app
 const app = express()
@@ -48,12 +59,7 @@ app.post("/webhooks",clerkWebhooks)
 
 // Image storage Engine
 
-const storage = multer.diskStorage({
-  destination:'./upload/images',
-  filename:(req,file,cb)=>{
-    return cb(null,`${file.fieldname}_${Date.now()}${Path.extname(file.originalname)}`)
-  }
-})
+
 
 const upload = multer({ storage: multer.memoryStorage() });
 
@@ -61,12 +67,35 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 app.use('/images', express.static('upload/images'))
 
-app.post("/upload", upload.single('IssuePhoto'), (req, res) => {
+// app.post("/upload", upload.single('IssuePhoto'), (req, res) => {
+//     res.json({
+//         success: 1,
+//         image_url: `http://localhost:${PORT}/images/${req.file.filename}`
+//     })
+// })
+
+app.post("/upload", upload.single("IssuePhoto"), async (req, res) => {
+  try {
+    const result = await new Promise((resolve, reject) => {
+      const stream = cloudinary.uploader.upload_stream(
+        { folder: "issue_images" },
+        (error, result) => {
+          if (result) resolve(result);
+          else reject(error);
+        }
+      );
+      streamifier.createReadStream(req.file.buffer).pipe(stream);
+    });
+
     res.json({
-        success: 1,
-        image_url: `http://localhost:${PORT}/images/${req.file.filename}`
-    })
-})
+      success: 1,
+      image_url: result.secure_url,
+    });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ success: 0, error: error.message });
+  }
+});
 
 
 app.post('/ReportIssue', async (req,res)=> {
