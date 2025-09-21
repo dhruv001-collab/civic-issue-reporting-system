@@ -119,7 +119,7 @@ const Nav = () => {
           {/* Right Section */}
           <div className="hidden lg:flex gap-4">
             <Link to="/report-issue">
-              <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all">
+              <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all cursor-pointer">
                 Post Issue
               </button>
             </Link>

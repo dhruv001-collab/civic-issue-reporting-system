@@ -3,15 +3,28 @@ import worldBackground from "../../assets/world.png";
 import HeroImg from "../../assets/Hero-img.png";
 import { AppContext } from "../../Context/AppContext";
 import { Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
+
+
 const Hero = () => {
   const { searchText, setSearchText } = useContext(AppContext);
+
+  const navigate = useNavigate();
+
+  const handleKeyDown = (e) => {
+    if (e.key === "Enter" && searchText.trim() !== "") {
+      navigate("/reports");
+    }
+  };
+
+
   return (
     <div className="relative h-screen-auto min-h-screen md:min-h-[60vh] lg:min-h-[60vh] lg:pt-20 lg:pb-10 lg:mb-20 flex items-center md:items-center justify-center overflow-hidden bg-white">
       {/* bg image */}
       <img
         className="absolute inset-0 w-full h-full object-cover opacity-65"
         src={worldBackground}
-        alt="World map background"
+        alt="World map background" style={{pointerEvents: 'none'}}
       />
 
       {/* Content*/}
@@ -34,6 +47,7 @@ const Hero = () => {
             <input
               value={searchText}
               onChange={(e) => setSearchText(e.target.value)}
+              onKeyDown={handleKeyDown} //
               type="text"
               placeholder="Enter a nearby postcode, or street name and area"
               className="flex-grow px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
