@@ -184,6 +184,7 @@ const Nav = () => {
             <Link to="/reports" onClick={() => setIsOpen(false)}>
               Reports
             </Link>
+      
 
             <div className="flex flex-col gap-3 mt-3">
               <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all">
