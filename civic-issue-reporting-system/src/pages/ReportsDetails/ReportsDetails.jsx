@@ -34,7 +34,7 @@ const ReportsDetails = () => {
       <Nav />
       <section className="flex flex-col md:flex-row gap-6 pt-3 lg:px-8">
         <LeftSection report={report} />
-        <RightSection comments={commentsData?.comments || []} />
+        <RightSection report={report} />
       </section>
       <Footer />
     </>

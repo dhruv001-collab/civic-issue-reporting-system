@@ -10,6 +10,7 @@ import {v2 as cloudinary} from "cloudinary"
 import streamifier from "streamifier";
 import ReportIssue from "./models/ReportIssue.js"
 import Contact from "./models/Contact.js"
+import Comment from "./models/Comment.js";
 
 // Configure Cloudinary
 cloudinary.config({ 
@@ -161,6 +162,47 @@ app.post('/contact', async (req,res) => {
     message:'Issue contact Successfully'
   })
 })
+
+app.post('/comment', async (req, res) => {
+  try {
+    const { comment, ReportId, name, image } = req.body; // destructure from req.body
+
+    if (!ReportId || !comment || !name) {
+      return res.status(400).json({ message: "ReportId, comment, and name are required" });
+    }
+
+    const lastComment = await Comment.findOne().sort({ _id: -1 });
+    const nextId = lastComment ? lastComment._id + 1 : 1;
+
+    const newComment = new Comment({
+      _id: nextId,
+      comment,
+      ReportId,
+      name,
+      image: image || "", // fallback empty string if no image
+    });
+
+    await newComment.save();
+
+    res.status(201).json(newComment); // return saved comment
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to save comment" });
+  }
+});
+
+app.post('/getComments', async (req, res) => {
+  try {
+    const reportId = Number(req.body.ReportId); // get from body
+    if (!reportId) return res.status(400).json({ message: "ReportId is required" });
+
+    const comments = await Comment.find({ ReportId: reportId }).sort({ date: -1 });
+    res.json(comments);
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: "Failed to fetch comments" });
+  }
+});
 
 
 const PORT = process.env.PORT || 5000
