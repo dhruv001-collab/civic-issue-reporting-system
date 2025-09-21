@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
 import worldBackground from "../../assets/world.png";
 import HeroImg from "../../assets/Hero-img.png";
-
+import { AppContext } from "../../Context/AppContext";
+import { Link } from "react-router-dom";
 const Hero = () => {
+  const { searchText, setSearchText } = useContext(AppContext);
   return (
     <div className="relative h-screen-auto min-h-screen md:min-h-[60vh] lg:min-h-[60vh] lg:pt-20 lg:pb-10 lg:mb-20 flex items-center md:items-center justify-center overflow-hidden bg-white">
       {/* bg image */}
@@ -30,13 +32,15 @@ const Hero = () => {
           {/* Input + Button */}
           <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
             <input
+              value={searchText}
+              onChange={(e) => setSearchText(e.target.value)}
               type="text"
               placeholder="Enter a nearby postcode, or street name and area"
               className="flex-grow px-5 py-3 rounded-lg border border-gray-300 focus:outline-none focus:ring-2 focus:ring-blue-500 text-gray-800"
             />
-            <button className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-200">
+            <Link to={"/reports"} className="px-6 py-3 bg-teal-500 text-white rounded-lg font-semibold hover:bg-teal-600 transition-colors duration-200">
               Continue
-            </button>
+            </Link>
           </div>
         </div>
 
