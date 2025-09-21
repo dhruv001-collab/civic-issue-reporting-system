@@ -1,4 +1,6 @@
 import { FaMapMarkerAlt, FaExclamationCircle, FaClock } from "react-icons/fa";
+import moment from 'moment';
+
 
 const LeftSection = ({ report }) => {
   if (!report) return <p>No report found.</p>;
@@ -39,7 +41,7 @@ const LeftSection = ({ report }) => {
         </span>
       </div>
       <p className="text-xs text-gray-500 text-right">
-        Issued on {report.date}
+        Issued on {moment(report.date).format('DD/MM/YYYY')} 
       </p>
     </div>
   );

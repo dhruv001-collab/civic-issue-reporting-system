@@ -1,6 +1,6 @@
 import React from 'react'
+import moment from 'moment';
 import { userDashboardLikesCommentData } from '../../userDashboardLikesComment/userDashboardLikesCommentData'
-import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import location from "../../assets/location.png";
 import { Link } from 'react-router-dom';
@@ -105,7 +105,7 @@ const HeroDashboard = () => {
                             <FaComment /> 65
                           </span>
                         </div>
-                        <span className="text-gray-400">{report.date}</span>
+                        <span className="text-gray-400">{moment(report.date).format('DD/MM/YYYY')} </span>
                       </div>
                     </div>
                   </Link>

@@ -204,6 +204,10 @@ app.post('/getComments', async (req, res) => {
   }
 });
 
+app.post('/deleteComment', async (req, res) => {
+  await Comment.findByIdAndDelete({ _id: req.body._id });
+  res.json({ success: true, message: 'Issue Deleted Successfully' });
+});
 
 const PORT = process.env.PORT || 5000
 
