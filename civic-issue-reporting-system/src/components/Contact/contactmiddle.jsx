@@ -216,7 +216,7 @@ const ContactPage = () => {
                             </div>
                         </label>
 
-                        <button onClick={() => { addProduct() }} type="submit" className="w-full bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition">
+                        <button onClick={() => { addProduct() }} type="submit" className="w-full bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition cursor-pointer">
                             Submit
                         </button>
                     </div>
