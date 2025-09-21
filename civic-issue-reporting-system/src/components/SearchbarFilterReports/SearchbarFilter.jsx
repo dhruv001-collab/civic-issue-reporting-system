@@ -33,10 +33,10 @@ const SearchbarFilter = ({ onSearch }) => {
         >
           <option value="All">All Status</option>
           <option value="Potholes">Potholes</option>
-          <option value="Broken Street Lights">Broken Street Lights</option>
+          <option value="Street Lights">Street Lights</option>
           <option value="Sanitation">Sanitation</option>
-          <option value="Traffic Violations">Traffic Violations</option>
-          <option value="Infrastructure">Infrastructure</option>
+          <option value="Traffic">Traffic</option>
+          <option value="Water">Water</option>
         </select>
         <MdOutlineKeyboardArrowDown className="absolute right-2 top-1/2 -translate-y-1/2 text-gray-500 pointer-events-none" />
       </div>
