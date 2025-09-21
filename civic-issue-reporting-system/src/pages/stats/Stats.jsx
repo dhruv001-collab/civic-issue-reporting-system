@@ -3,6 +3,7 @@ import Nav from "../../components/Header/Header";
 import { ReportsStatsData } from "../../ReportsStatsData/ReportsStatsData";
 import PieChart from "../../components/Piechart/PieChart";
 import BarChart from "../../components/BarChart/BarChart";
+import LineChart from "../../components/LineChart/LineChart";
 import Footer from "../../components/Footer/Footer";
 
 const Stats = () => {
@@ -23,6 +24,32 @@ const Stats = () => {
     { label: "Laxmi Nagar", value: 110 },
   ];
 
+
+  const monthlyData = [
+  { label: 'Jan', value: 277 },
+  { label: 'Feb', value: 169 },
+  { label: 'Mar', value: 238 },
+  { label: 'Apr', value: 235 },
+  { label: 'May ', value: 237 },
+  { label: 'Jun', value: 161 },
+  { label: 'Jul', value: 277 },
+];
+  
+  const convertToChartData = (data, label) => ({
+  labels: data.map((item) => item.label),
+  datasets: [
+    {
+      label,
+      data: data.map((item) => item.value),
+      fill: false,
+      borderColor: 'rgb(59, 130, 246)',
+      backgroundColor: 'rgb(59, 130, 246)',
+      tension: 0.4,
+    },
+  ],
+});
+
+
   return (
     <>
       <Nav />
@@ -40,13 +67,17 @@ const Stats = () => {
             </div>
           ))}
         </div>
-        <div className="flex flex-col lg:flex-row gap-4  mb-10">
+        <div className="grid grid-cols-1 md:grid-cols-1 lg:grid-cols-2 lg:flex-row gap-4 mb-10">
           <div className="bg-white shadow-md rounded-xl p-6 lg:w-[45vw]">
             <PieChart title="Category Distribution" data={categoryData} />
              
           </div>
           <div className="bg-white shadow-md rounded-xl p-6 lg:w-[45vw]">
             <BarChart title="Top Locations Reported" data={locationData} />
+          </div>
+
+          <div className="bg-white shadow-md rounded-xl p-6 lg:w-[45vw]">
+            <LineChart title="Trend Over Time" data={convertToChartData(monthlyData, 'Monthly Issues')} />
           </div>
         </div>
       </section>
