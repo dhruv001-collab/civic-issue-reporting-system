@@ -30,6 +30,10 @@ const ReportIssue = new mongoose.Schema({
         type:String,
         required : true
     },
+    urgency:{
+        type:String,
+        required:true
+    },
     date:{
         type:Date,
         default:Date.now,

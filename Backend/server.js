@@ -112,6 +112,7 @@ app.post('/ReportIssue', async (req,res)=> {
       description : req.body.description,
       category : req.body.category,
       image : req.body.image,
+      urgency : req.body.urgency,
    })
    console.log(reportData);
    await reportData.save();

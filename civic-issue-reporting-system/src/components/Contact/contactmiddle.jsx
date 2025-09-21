@@ -11,6 +11,7 @@ const ContactPage = () => {
     const [open, setOpen] = useState(false);
     const [isHuman, setIsHuman] = useState(false);
     const [selected, setSelected] = useState('');
+    const options = ['General Query', 'Technical Support', 'Return Status', 'Feedback'];
     const [contacts, setContacts] = useState({
         name: '',
         email: '',
@@ -23,7 +24,6 @@ const ContactPage = () => {
     }
 
 
-    const options = ['General Query', 'Technical Support', 'Return Status', 'Feedback'];
 
     const handleSelect = (option) => {
         setContacts({ ...contacts, subject: option });
