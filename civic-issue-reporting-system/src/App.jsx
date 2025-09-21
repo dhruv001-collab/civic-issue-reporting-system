@@ -11,7 +11,7 @@ import Faq from './pages/FAQs/Faq';
 import ScrollToTop from './components/ScrollToTop/ScrollToTop';
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import Stats from './pages/stats/stats';
+import Stats from './pages/stats/Stats';
 
 
 function App() {
