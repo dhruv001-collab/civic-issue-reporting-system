@@ -26,7 +26,7 @@ const ReportsFeed = () => {
       .toLowerCase()
       .includes(searchText.toLowerCase());
     const matchesStatus =
-      status === "All" || report.issue.toLowerCase() === status.toLowerCase();
+      status === "All" || report.Issue_title.toLowerCase() === status.toLowerCase();
     return matchesLocation && matchesStatus;
   });
 
