@@ -1,10 +1,42 @@
 import { FaMapMarkerAlt, FaExclamationCircle, FaClock } from "react-icons/fa";
 import moment from 'moment';
+import { useContext } from "react";
+import { AppContext } from "../../Context/AppContext";
+import { useNavigate } from "react-router-dom";
+import { toast } from "react-toastify";
 
 
-const LeftSection = ({ report }) => {
+const LeftSection = ({ report, removeReportFromState }) => {
+  const navigate = useNavigate();
+  const { setAllproducts, allproducts } = useContext(AppContext);
+
+
+  const handleDeleteIssue = async () => {
+    try {
+      const res = await fetch("http://localhost:5000/removeIssue", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ _id: report._id }),
+      });
+      const data = await res.json();
+
+      if (data.success) {
+        toast.success("Issue deleted successfully!", { autoClose: 1000 });
+
+        // Redirect to /reports after deletion
+        setTimeout(() => {
+          navigate("/reports");
+        }, 1000); // wait 1 second to allow toast to show
+      } else {
+        toast.error(data.message || "Failed to delete issue.");
+      }
+    } catch (err) {
+      console.error(err);
+      toast.error("Something went wrong.");
+    }
+  };
+
   if (!report) return <p>No report found.</p>;
-
   return (
     <div className="flex-1 bg-white rounded-2xl shadow p-6">
       <img
@@ -40,9 +72,21 @@ const LeftSection = ({ report }) => {
           <FaClock className="w-4 h-4" /> Pending
         </span>
       </div>
-      <p className="text-xs text-gray-500 text-right">
-        Issued on {moment(report.date).format('DD/MM/YYYY')} 
-      </p>
+      <div className="w-full flex justify-between">
+        <div onClick={() => handleDeleteIssue(report._id)} className="cursor-pointer">
+          {/* Lordicon Trash */}
+          <lord-icon
+            src="https://cdn.lordicon.com/jzinekkv.json"
+            trigger="hover"
+            colors="primary:#242424,secondary:#08a88a"
+            stroke="bold"
+            style={{ width: '30px', height: '30px', cursor: 'pointer' }}
+          ></lord-icon>
+        </div>
+        <p className="text-xs text-gray-500 text-right">
+          Issued on {moment(report.date).format('DD/MM/YYYY')}
+        </p>
+      </div>
     </div>
   );
 };

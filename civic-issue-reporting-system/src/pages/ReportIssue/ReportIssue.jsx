@@ -3,8 +3,11 @@ import Nav from '../../components/Header/Header'
 import ReportIssueleft from '../../components/ReportIssue/ReportIssueleft'
 import ReportIssueRight from '../../components/ReportIssue/ReportIssueRight'
 import Footer from "../../components/Footer/Footer";
+import { AppContext } from '../../Context/AppContext';
+import { useContext } from 'react';
 
 const ReportIssue = () => {
+  const { setAllproducts, allproducts } = useContext(AppContext);
   return (
     <>
       <Nav/>
