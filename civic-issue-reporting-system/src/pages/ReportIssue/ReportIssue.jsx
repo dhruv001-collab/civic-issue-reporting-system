@@ -1,6 +1,6 @@
 import React from 'react'
 import Nav from '../../components/Header/Header'
-import ReportIssueleft from '../../components/ReportIssue/ReportIssueleft'
+import ReportIssueleft from '../../components/ReportIssue/ReportIssueLeft'
 import ReportIssueRight from '../../components/ReportIssue/ReportIssueRight'
 import Footer from "../../components/Footer/Footer";
 import { AppContext } from '../../Context/AppContext';

@@ -5,6 +5,7 @@ import location from "../../assets/location.png";
 import { Link } from "react-router-dom";
 import { useContext, useEffect } from "react";
 import { AppContext } from "../../Context/AppContext";
+import moment from 'moment';
 
 const RecentlyReported = () => {
    const {  setAllproducts, allproducts } = useContext(AppContext);
@@ -77,7 +78,7 @@ const RecentlyReported = () => {
                     <FaComment />20
                   </span>
                 </div>
-                <span className="text-gray-400">{report.date}</span>
+                <span className="text-gray-400">{moment(report.date).format('DD/MM/YYYY')}</span>
               </div>
             </div>
           </Link>

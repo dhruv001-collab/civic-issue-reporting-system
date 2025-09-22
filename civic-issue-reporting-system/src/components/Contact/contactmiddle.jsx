@@ -81,7 +81,7 @@ const ContactPage = () => {
                 <span className='flex items-center gap-2 '>
                     <img className='w-8' src={phone} alt="" />
                     <p className='font-semibold'>
-                        +91 996 896 9557
+                        +91 1100011001
                     </p>
                 </span>
                 <p className='text-xl font-bold hidden sm:block '>
@@ -91,7 +91,7 @@ const ContactPage = () => {
                 <span className='flex items-center gap-2'>
                     <img className='w-8' src={email} alt="" />
                     <p className='font-semibold'>
-                        urbanfixsupport@gmail.com
+                        urbanfix@gmail.com
                     </p>
                 </span>
                 <p className='text-xl font-bold hidden sm:block'>

@@ -56,18 +56,23 @@ const Nav = () => {
               Home
             </NavLink>
 
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                `transition-all ${isActive
-                  ? "text-blue-500 font-semibold"
-                  : "hover:text-blue-500"
-                }`
-              }
-            >
-              Dashboard
-            </NavLink>
+            {user ?
 
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  `transition-all ${isActive
+                    ? "text-blue-500 font-semibold"
+                    : "hover:text-blue-500"
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
+              :
+              ""
+
+            }
             <NavLink
               to="/stats"
               className={({ isActive }) =>

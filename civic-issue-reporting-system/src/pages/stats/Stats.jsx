@@ -76,10 +76,11 @@ const Stats = () => {
             <BarChart title="Top Locations Reported" data={locationData} />
           </div>
 
-          <div className="bg-white shadow-md rounded-xl p-6 lg:w-[45vw]">
+          
+        </div>
+        <div className="bg-white shadow-md rounded-xl p-6 lg:w-[90vw] flex justify-center items-center ">
             <LineChart title="Trend Over Time" data={convertToChartData(monthlyData, 'Monthly Issues')} />
           </div>
-        </div>
       </section>
       <Footer/>
     </>
