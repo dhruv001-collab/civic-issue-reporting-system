@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
 import { AppContext } from "../../Context/AppContext";
+import moment from 'moment';
 
 const ReportsFeed = () => {
   const { searchText, status, setAllproducts, allproducts } = useContext(AppContext);
@@ -64,7 +65,7 @@ const ReportsFeed = () => {
                     <FaComment /> 20
                   </span>
                 </div>
-                <span className="text-gray-300">{report.date}</span>
+                <span className="text-gray-300">{moment(report.date).format('DD/MM/YYYY')}</span>
               </div>
               <Link
                 to={`/reports/${report._id}`}

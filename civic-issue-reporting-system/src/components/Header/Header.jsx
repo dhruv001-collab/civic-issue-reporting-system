@@ -56,18 +56,23 @@ const Nav = () => {
               Home
             </NavLink>
 
-            <NavLink
-              to="/dashboard"
-              className={({ isActive }) =>
-                `transition-all ${isActive
-                  ? "text-blue-500 font-semibold"
-                  : "hover:text-blue-500"
-                }`
-              }
-            >
-              Dashboard
-            </NavLink>
+            {user ?
 
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  `transition-all ${isActive
+                    ? "text-blue-500 font-semibold"
+                    : "hover:text-blue-500"
+                  }`
+                }
+              >
+                Dashboard
+              </NavLink>
+              :
+              ""
+
+            }
             <NavLink
               to="/stats"
               className={({ isActive }) =>
@@ -187,7 +192,7 @@ const Nav = () => {
             <Link to="/contact" onClick={() => setIsOpen(false)}>
               Contact
             </Link>
-            
+
 
             <div className="flex flex-col gap-3 mt-3">
               <button className="px-6 py-2  bg-teal-500 text-white rounded-full hover:bg-teal-600 transition-all">
