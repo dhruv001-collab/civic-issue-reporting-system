@@ -40,7 +40,7 @@ const ContactPage = () => {
         }
         console.log(contacts);
         try {
-            const response = await fetch("http://localhost:5000/contact", {
+            const response = await fetch("https://civic-issue-reporting-system-server.vercel.app/contact", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",

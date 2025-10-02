@@ -54,7 +54,7 @@ const RightSection = ({ report }) => {
       if (!report?._id) return;
 
       try {
-        const res = await fetch("http://localhost:5000/getComments", {
+        const res = await fetch("https://civic-issue-reporting-system-server.vercel.app/getComments", {
           method: "POST",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({ ReportId: report._id }),
@@ -85,7 +85,7 @@ const RightSection = ({ report }) => {
 
   const handleDelete = async (_id) => {
     try {
-      const res = await fetch("http://localhost:5000/deleteComment", {
+      const res = await fetch("https://civic-issue-reporting-system-server.vercel.app/deleteComment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ _id }),   // ✅ send _id directly
@@ -117,7 +117,7 @@ const RightSection = ({ report }) => {
 
     // 2. Delete the old comment right away
     try {
-      const res = await fetch("http://localhost:5000/deleteComment", {
+      const res = await fetch("https://civic-issue-reporting-system-server.vercel.app/deleteComment", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ _id: comment._id }),
@@ -152,7 +152,7 @@ const RightSection = ({ report }) => {
     console.log(commentData);
 
     try {
-      const response = await fetch("http://localhost:5000/comment", {
+      const response = await fetch("https://civic-issue-reporting-system-server.vercel.app/comment", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

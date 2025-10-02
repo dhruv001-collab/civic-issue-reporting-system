@@ -21,7 +21,7 @@ const HeroDashboard = () => {
   useEffect(() => {
     const fetchinfo = async () => {
       try {
-        const res = await fetch("http://localhost:5000/allIssues");
+        const res = await fetch("https://civic-issue-reporting-system-server.vercel.app/allIssues");
         const data = await res.json();
 
         if (isLoaded && isSignedIn && user) {

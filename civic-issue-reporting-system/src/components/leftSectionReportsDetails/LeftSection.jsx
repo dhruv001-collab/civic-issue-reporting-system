@@ -13,7 +13,7 @@ const LeftSection = ({ report, removeReportFromState }) => {
 
   const handleDeleteIssue = async () => {
     try {
-      const res = await fetch("http://localhost:5000/removeIssue", {
+      const res = await fetch("https://civic-issue-reporting-system-server.vercel.app/removeIssue", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ _id: report._id }),

@@ -9,7 +9,7 @@ const ReportsFeed = () => {
   const { searchText, status, setAllproducts, allproducts } = useContext(AppContext);
 
   const fetchinfo = async () => {
-    await fetch('http://localhost:5000/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
+    await fetch('https://civic-issue-reporting-system-server.vercel.app/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
   }
 
 
