@@ -12,7 +12,7 @@ const ReportsDetails = () => {
   const { setAllproducts, allproducts } = useContext(AppContext);
 
   const fetchinfo = async () => {
-    await fetch('https://civic-issue-reporting-system-server.vercel.app/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
+    await fetch('https://backend-i7id.onrender.com/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
   }
 
 

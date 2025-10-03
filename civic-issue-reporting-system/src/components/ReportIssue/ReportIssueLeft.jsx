@@ -70,7 +70,7 @@ const ReportIssueleft = () => {
     if (image) {
       const formData = new FormData();
       formData.append("IssuePhoto", image);
-      await fetch('https://civic-issue-reporting-system-server.vercel.app/upload', {
+      await fetch('https://backend-i7id.onrender.com/upload', {
         method: "POST",
         headers: { Accept: "application/json" },
         body: formData
@@ -81,7 +81,7 @@ const ReportIssueleft = () => {
       if (responseData.success) product.image = responseData.image_url;
     }
 
-    await fetch('https://civic-issue-reporting-system-server.vercel.app/ReportIssue', {
+    await fetch('https://backend-i7id.onrender.com/ReportIssue', {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body: JSON.stringify(product)

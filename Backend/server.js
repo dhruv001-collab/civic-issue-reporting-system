@@ -67,13 +67,6 @@ const upload = multer({ storage: multer.memoryStorage() });
 
 app.use('/images', express.static('upload/images'))
 
-// app.post("/upload", upload.single('IssuePhoto'), (req, res) => {
-//     res.json({
-//         success: 1,
-//         image_url: `http://localhost:${PORT}/images/${req.file.filename}`
-//     })
-// })
-
 app.post("/upload", upload.single("IssuePhoto"), async (req, res) => {
   try {
     const result = await new Promise((resolve, reject) => {

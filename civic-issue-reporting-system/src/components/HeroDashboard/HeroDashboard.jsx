@@ -13,15 +13,10 @@ const HeroDashboard = () => {
 
   const { isLoaded, isSignedIn, user } = useUser();
 
-  //  const fetchinfo = async () => {
-  // await fetch('http://localhost:5000/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
-  // }
-
-
   useEffect(() => {
     const fetchinfo = async () => {
       try {
-        const res = await fetch("https://civic-issue-reporting-system-server.vercel.app/allIssues");
+        const res = await fetch("https://backend-i7id.onrender.com/allIssues");
         const data = await res.json();
 
         if (isLoaded && isSignedIn && user) {
