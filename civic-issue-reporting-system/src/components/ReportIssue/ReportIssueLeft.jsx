@@ -82,7 +82,7 @@ const ReportIssueleft = () => {
       if (responseData.success) product.image = responseData.image_url;
     }
 
-    await fetch('https://backend-i7id.onrender.com/ReportIssue', {
+    await fetch('https://backend-i7id.onrender.com/report-issue', {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
       body: JSON.stringify(product)
