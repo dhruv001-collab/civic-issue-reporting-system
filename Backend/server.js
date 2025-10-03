@@ -91,7 +91,7 @@ app.post("/upload", upload.single("IssuePhoto"), async (req, res) => {
 });
 
 
-app.post('/ReportIssue', async (req,res)=> {
+app.post('/report-issue', async (req,res)=> {
 
   const lastIssue = await ReportIssue.findOne().sort({ _id: -1 });
 
