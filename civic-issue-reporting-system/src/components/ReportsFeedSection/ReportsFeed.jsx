@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from "react";
+ import React, { useContext, useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import { FaThumbsUp, FaComment } from "react-icons/fa";
 import { DummyReportsData } from "../../DummyReportsData/DummyReportsData";
@@ -9,7 +9,7 @@ const ReportsFeed = () => {
   const { searchText, status, setAllproducts, allproducts } = useContext(AppContext);
 
   const fetchinfo = async () => {
-    await fetch('httpshttps://backend-i7id.onrender.com/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
+    await fetch('https://backend-i7id.onrender.com/allIssues').then((res) => res.json()).then((data) => setAllproducts(data))
   }
 
 
