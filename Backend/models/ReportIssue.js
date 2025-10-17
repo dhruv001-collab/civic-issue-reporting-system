@@ -38,6 +38,7 @@ const ReportIssue = new mongoose.Schema({
         type:Date,
         default:Date.now,
     },
+    user: { type: String, required: true },
 })
 
 const Report = mongoose.model("Report",ReportIssue);

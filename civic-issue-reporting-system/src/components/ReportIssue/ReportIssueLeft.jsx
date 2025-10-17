@@ -24,17 +24,18 @@ const ReportIssueleft = () => {
     image: "",
     email: "",
     urgency: "",
+    user: "", // 👈 Added to hold user's name
   });
 
-  // Set user email if signed in
+  // 🧠 Set user info if signed in
   useEffect(() => {
     if (isLoaded && isSignedIn) {
       const email = user?.primaryEmailAddress?.emailAddress || user?.emailAddresses?.[0]?.emailAddress || "";
-      setIssueDetails(prev => ({ ...prev, email }));
+      const fullName = user?.fullName || user?.username || email.split("@")[0]; // 👈 get user name
+      setIssueDetails(prev => ({ ...prev, email, user: fullName }));
     }
   }, [isLoaded, isSignedIn, user]);
 
-  // Handle file selection
   const ImageHandler = (e) => setImage(e.target.files[0]);
 
   const changeHandler = (e) => setIssueDetails({ ...issueDetails, [e.target.name]: e.target.value });
@@ -44,28 +45,23 @@ const ReportIssueleft = () => {
     if (fileInputRef.current) fileInputRef.current.value = "";
   };
 
-  // Add issue
+  // ✅ Add issue
   const addProduct = async () => {
-    // Check if any field is empty
     const { Issue_title, category, location, description, urgency } = issueDetails;
     if (!Issue_title || !category || !location || !description || !urgency) {
-      toast.error("Please complete all required fields!", {
-        position: "top-right",
-        autoClose: 3000,
-      });
-      return; // Stop submission
+      toast.error("Please complete all required fields!", { position: "top-right", autoClose: 3000 });
+      return;
     }
-
 
     if (!isSignedIn) {
       toast.error("LogIn / SignUp to submit the issue", { position: "top-right", autoClose: 6000 });
       return;
     }
 
-    setLoading(true); // start loading
-    toast.info("Submitting your issue...", { autoClose: 2000 }); // show info toast
+    setLoading(true);
+    toast.info("Submitting your issue...", { autoClose: 2000 });
 
-    let product = { ...issueDetails };
+    let product = { ...issueDetails }; // 👈 includes user name now
     let responseData;
 
     if (image) {
@@ -82,6 +78,7 @@ const ReportIssueleft = () => {
       if (responseData.success) product.image = responseData.image_url;
     }
 
+    // 👇 includes "user" field (Clerk name)
     await fetch('https://backend-i7id.onrender.com/report-issue', {
       method: "POST",
       headers: { Accept: "application/json", "Content-Type": "application/json" },
@@ -98,14 +95,21 @@ const ReportIssueleft = () => {
             description: "",
             image: "",
             email: issueDetails.email,
-            urgency: ""
+            urgency: "",
+            user: issueDetails.user, // keep user name for next submit
           });
           setImage(null);
           if (fileInputRef.current) fileInputRef.current.value = "";
         } else {
           toast.error("❌ Failed to post issue");
         }
+      })
+      .catch(err => {
+        toast.error("Something went wrong!");
+        console.error(err);
       });
+
+    setLoading(false);
   };
 
   return (

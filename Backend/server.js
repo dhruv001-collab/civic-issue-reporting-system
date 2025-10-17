@@ -91,32 +91,49 @@ app.post("/upload", upload.single("IssuePhoto"), async (req, res) => {
 });
 
 
-app.post('/report-issue', async (req,res)=> {
-
-  const lastIssue = await ReportIssue.findOne().sort({ _id: -1 });
-
+app.post('/report-issue', async (req, res) => {
+  try {
+    const lastIssue = await ReportIssue.findOne().sort({ _id: -1 });
     const nextId = lastIssue ? lastIssue._id + 1 : 1;
 
-   const reportData = new ReportIssue({
-      _id : nextId,
-      Issue_title : req.body.Issue_title,
-      email : req.body.email,
-      location : req.body.location,
-      description : req.body.description,
-      category : req.body.category,
-      image : req.body.image,
-      urgency : req.body.urgency,
-   })
-   console.log(reportData);
-   await reportData.save();
-   console.log("Issue Reported Successfully");
-   res.json({
-    success:true,
-    message:'Issue Reported Successfully'
-  })
-})
+ 
+    const { 
+      Issue_title, 
+      email, 
+      location, 
+      description, 
+      category, 
+      image, 
+      urgency, 
+      user  
+    } = req.body;
 
-// creating api for deleting products
+    const reportData = new ReportIssue({
+      _id: nextId,
+      Issue_title,
+      email,
+      user: user || email.split("@")[0], // 👈 fallback if no name sent
+      location,
+      description,
+      category,
+      image,
+      urgency,
+    });
+
+    console.log("Saving report:", reportData);
+    await reportData.save();
+
+    res.json({
+      success: true,
+      message: "Issue Reported Successfully",
+    });
+  } catch (error) {
+    console.error("Error saving issue:", error);
+    res.status(500).json({ success: false, message: "Server Error" });
+  }
+});
+
+
 
 app.post('/removeIssue', async (req,res) => {
   await ReportIssue.findByIdAndDelete({_id:req.body._id});
