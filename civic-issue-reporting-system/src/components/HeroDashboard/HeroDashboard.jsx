@@ -60,55 +60,31 @@ const HeroDashboard = () => {
         </p>
       </div>
 
-      {/* Dashboard Cards */}
-
-      <div className='flex md:'>
-        <div className="w-full  gap-6 px-6 md:px-10 pb-10 mt-10 lg:mt-5 ">
-          <div className="bg-white shadow-md rounded-xl p-6 flex flex-col w-full hover:shadow-lg transition"
-          >
-            <span className="text-4xl font-extrabold text-gray-900">{allproducts.length}</span>
-            <span className="text-gray-600 text-sm mt-2">Total Issue Posted</span>
-          </div>
-
-
+     {/* Dashboard Cards */}
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-6 px-6 md:px-10 pb-10 mt-10">
+        <div className="bg-white shadow-md rounded-xl p-6 flex flex-col hover:shadow-lg transition">
+          <span className="text-4xl font-extrabold text-gray-900">
+            {allproducts.length}
+          </span>
+          <span className="text-gray-600 text-sm mt-2">Total Issue Posted</span>
         </div>
-        <div className="w-full gap-6 px-6 md:px-10 pb-10 mt-10 lg:mt-5">
 
-          <div
-
-            className="bg-white shadow-md rounded-xl p-6 flex flex-col  hover:shadow-lg transition"
-          >
-            <span className="text-4xl font-extrabold text-gray-900">3</span>
-            <span className="text-gray-600 text-sm mt-2">Resolved/Fixed</span>
-          </div>
-
-
+        <div className="bg-white shadow-md rounded-xl p-6 flex flex-col hover:shadow-lg transition">
+          <span className="text-4xl font-extrabold text-gray-900">3</span>
+          <span className="text-gray-600 text-sm mt-2">Resolved/Fixed</span>
         </div>
-        <div className="w-full gap-6 px-6 md:px-10 pb-10 mt-10 lg:mt-5">
 
-          <div
-
-            className="bg-white shadow-md rounded-xl p-6 flex flex-col  hover:shadow-lg transition"
-          >
-            <span className="text-4xl font-extrabold text-gray-900">5</span>
-            <span className="text-gray-600 text-sm mt-2">Pending Issues</span>
-          </div>
-
-
+        <div className="bg-white shadow-md rounded-xl p-6 flex flex-col hover:shadow-lg transition">
+          <span className="text-4xl font-extrabold text-gray-900">5</span>
+          <span className="text-gray-600 text-sm mt-2">Pending Issues</span>
         </div>
-        <div className="w-full gap-6 px-6 md:px-10 pb-10 mt-10 lg:mt-5">
 
-          <div
-
-            className="bg-white shadow-md rounded-xl p-6 flex flex-col  hover:shadow-lg transition"
-          >
-            <span className="text-4xl font-extrabold text-gray-900">129</span>
-            <span className="text-gray-600 text-sm mt-2">Likes</span>
-          </div>
-
-
+        <div className="bg-white shadow-md rounded-xl p-6 flex flex-col hover:shadow-lg transition">
+          <span className="text-4xl font-extrabold text-gray-900">129</span>
+          <span className="text-gray-600 text-sm mt-2">Likes</span>
         </div>
       </div>
+
 
       <section className="mt-8 h-[90vh]">
         <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4 px-4 sm:px-6 lg:px-10">
