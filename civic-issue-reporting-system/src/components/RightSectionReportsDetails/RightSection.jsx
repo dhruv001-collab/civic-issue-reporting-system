@@ -206,7 +206,7 @@ const RightSection = ({ report }) => {
             <input name='comment' value={Comments.comment} type="text" onChange={changeHandler} className='w-full border border-gray-400 rounded-md h-8 sm:text-sm sm:h-8 md:h-8 px-3 sm:px-4 text-sm bg-gray-50 hover:bg-white focus:outline-none focus:ring-2 focus:ring-teal-400' placeholder='Comment' />
           </div>
 
-          <button onClick={() => { addComment() }} className=' bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition'>Send</button>
+          <button onClick={() => { addComment() }} className=' bg-teal-500 text-white px-6 py-2 rounded-md hover:bg-teal-600 transition cursor-pointer'>Send</button>
 
 
 
