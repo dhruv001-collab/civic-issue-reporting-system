@@ -59,10 +59,10 @@ const ReportsFeed = () => {
               <div className="flex justify-between items-center text-sm mb-3">
                 <div className="flex items-center gap-3">
                   <span className="flex items-center gap-1">
-                    <FaThumbsUp /> 25
+                    <FaThumbsUp /> 12
                   </span>
                   <span className="flex items-center gap-1">
-                    <FaComment /> 20
+                    <FaComment /> 7
                   </span>
                 </div>
                 <span className="text-gray-300">{moment(report.date).format('DD/MM/YYYY')}</span>
