@@ -13,7 +13,7 @@ const ReportIssueleft = () => {
   const [openCategory, setOpenCategory] = useState(false);
   const [openUrgency, setOpenUrgency] = useState(false);
 
-  const CategoryOptions = ['polythene', 'Garbage', 'Electricity', 'Water'];
+  const CategoryOptions = ['Potholes', 'Garbage', 'Electricity', 'Water'];
   const UrgencyOptions = ['Normal', 'High', 'Critical'];
 
   const [issueDetails, setIssueDetails] = useState({
